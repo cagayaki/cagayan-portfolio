@@ -1,34 +1,43 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './Header'; // Adjust path if needed
-import Hero from './Hero'; // Import the hero component
+import React, { useRef } from 'react';
+import Header from './Header';
+import Hero from './Hero';
+import About from './About';
+import Skills from './Skills';
+import Footer from './Footer';  // Import Footer component
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Home() {
-  // Keep your Home component code (if needed)
-  return null; // or actual content
-}
-
-function About() {
-  // Keep your About component code
-  return null; // or actual content
-}
-
 function App() {
+  // Create refs for each section
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const skillsRef = useRef(null);
+
+  // Function to scroll to the section smoothly
+  const scrollToSection = (section) => {
+    if (section === 'hero' && heroRef.current) {
+      heroRef.current.scrollIntoView({ behavior: 'smooth' });
+    } else if (section === 'about' && aboutRef.current) {
+      aboutRef.current.scrollIntoView({ behavior: 'smooth' });
+    } else if (section === 'skills' && skillsRef.current) {
+      skillsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Hero />   {/* Add Hero section here */}
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </main>
+    <div className="App">
+      <Header scrollToSection={scrollToSection} />
+      <div ref={heroRef}>
+        <Hero />
       </div>
-    </Router>
+      <div ref={aboutRef}>
+        <About />
+      </div>
+      <div ref={skillsRef}>
+        <Skills />
+      </div>
+      <Footer /> {/* Add Footer here */}
+    </div>
   );
 }
 

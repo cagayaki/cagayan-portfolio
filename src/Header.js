@@ -1,17 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({ scrollToSection }) {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm" style={{ fontFamily: '"Lato", sans-serif' }}>
         <div className="container-fluid">
-          {/* Brand/logo on the left */}
-          <Link className="navbar-brand fw-bold" to="/">
+          <a className="navbar-brand fw-bold" href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>
             🐳 My Portfolio
-          </Link>
-          
-          {/* Toggler for mobile view */}
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,24 +19,16 @@ function Header() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-
-          {/* Centered links */}
           <div className="collapse navbar-collapse justify-content-center" id="navbarCentered">
             <ul className="navbar-nav mb-2 mb-lg-0">
               <li className="nav-item px-3">
-                <Link className="nav-link" to="/">Home</Link>
+                <a href="#hero" className="nav-link" onClick={e => { e.preventDefault(); scrollToSection('hero'); }}>Home</a>
               </li>
               <li className="nav-item px-3">
-                <Link className="nav-link" to="/about">About</Link>
+                <a href="#about" className="nav-link" onClick={e => { e.preventDefault(); scrollToSection('about'); }}>About</a>
               </li>
               <li className="nav-item px-3">
-                <Link className="nav-link" to="/skills">Skills</Link>
-              </li>
-              <li className="nav-item px-3">
-                <Link className="nav-link" to="/projects">Projects</Link>
-              </li>
-              <li className="nav-item px-3">
-                <Link className="nav-link" to="/personal">Personal Info</Link>
+                <a href="#skills" className="nav-link" onClick={e => { e.preventDefault(); scrollToSection('skills'); }}>Skills</a>
               </li>
             </ul>
           </div>
