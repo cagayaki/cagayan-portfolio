@@ -3,7 +3,7 @@ import Header from './Header';
 import Hero from './Hero';
 import About from './About';
 import Skills from './Skills';
-import MyProjects from './MyProjects';  // Capital P matches file name MyProjects.js exactly
+import MyProjects from './MyProjects';   // Capital P matches file name MyProjects.js exactly
 
 import Footer from './Footer';
 import './App.css';
